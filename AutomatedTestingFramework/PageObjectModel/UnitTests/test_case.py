@@ -1,20 +1,15 @@
-from time import sleep
-from selenium import webdriver
 import unittest
-from ddt import ddt, file_data, data
-import warnings
+from time import sleep
+from ddt import ddt, file_data, data, unpack
+from selenium import webdriver
 
-from UI_Test.PageObjectDemo.PageObject.index_page import IndexPage
-from UI_Test.PageObjectDemo.PageObject.login_page import LoginPage
-# 测试用例的设计
-
-
+from AutomatedTestingFramework.PageObjectModel.PageObject.index_page import IndexPage
+from AutomatedTestingFramework.PageObjectModel.PageObject.login_page import LoginPage
 
 @ddt
 class TestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        # warnings.simplefilter('ignore', ResourceWarning)
         cls.driver = webdriver.Chrome()
         cls.lp = LoginPage(cls.driver)
         cls.ip = IndexPage(cls.driver)
@@ -23,16 +18,15 @@ class TestCase(unittest.TestCase):
     def tearDownClass(cls) -> None:
         cls.driver.quit()
 
-    @file_data('../data/user.yaml')
+    @file_data('../Data/user.yaml')
     def test_1_login(self, username, password):
-        txt = self.lp.login(username, password)
+        self.lp.login(username, password)
         sleep(3)
 
-    @data('手机', '衣服', '电脑')
-    def test_2_search(self, txt):
+    @data('手机', '电脑')
+    def test_2_index(self, txt):
         self.ip.search(txt)
         sleep(3)
-
 
 if __name__ == '__main__':
     unittest.main()

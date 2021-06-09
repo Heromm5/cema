@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from UI_Test.PageObjectDemo.BasePage.base_page import BasePage
+from AutomatedTestingFramework.PageObjectModel.BasePage.base_page import BasePage
 
 
 class IndexPage(BasePage):

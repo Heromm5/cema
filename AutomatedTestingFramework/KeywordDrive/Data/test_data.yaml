@@ -1,0 +1,21 @@
+-
+  type: Chrome
+  url: http://www.baidu.com
+  input:
+    name: id
+    value: kw
+    txt: 阿紫
+  click:
+    name: id
+    value: su
+
+-
+  type: Chrome
+  url: http://39.98.138.157/shopxo/index.php
+  input:
+    name: id
+    value: search-input
+    txt: 手机
+  click:
+    name: id
+    value: ai-topsearch
